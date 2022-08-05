@@ -260,14 +260,16 @@
     cursor: pointer
     text-align: right
     margin-left: auto
-    
-    i
-      font-size: 0.7em
+    display: flex
+    align-items: center
+    i 
       opacity: 0.3
-
-    &:hover
-      i
-        opacity: 1
+      transition: .4s
+    i.fa-ellipsis-h
+      font-size: 0.7em    
+    i:hover
+      opacity: 1
+      transition: .4s
 
   
   .statusWrapper
