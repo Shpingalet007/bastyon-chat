@@ -29,6 +29,8 @@
           :scrollType="scrollType"
           @shareManyMessages="shareManyMessages"
           :selectedMessages="selectedMessages"
+          :isRemoveSelectedMessages="isRemoveSelectedMessages"
+          @messagesIsDeleted="messagesIsDeleted"
         />
       </div>
     </div>

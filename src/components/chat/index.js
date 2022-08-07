@@ -46,6 +46,7 @@ export default {
       showShareMessages: false,
 
       selectedMessages: [],
+      isRemoveSelectedMessages: false,
     };
   },
 
@@ -440,6 +441,16 @@ export default {
       pr.then(() => {
         this.core.share(_sharing);
       });
+    },
+    removeDataMessages: function () {
+      this.isRemoveSelectedMessages = true;
+    },
+    messagesIsDeleted(state) {
+      this.showShareMessages = false;
+      this.showInput = true;
+      if (state) {
+        this.selectedMessages = [];
+      }
     },
   },
 };

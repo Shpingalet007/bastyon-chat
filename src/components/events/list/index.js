@@ -12,6 +12,7 @@ export default {
     scrollType: "",
     error: [Object, Error, String],
     selectedMessages: [],
+    isRemoveSelectedMessages: false,
   },
   components: {},
   data: function () {
@@ -199,7 +200,6 @@ export default {
       if (this.scrollType === "custom") {
         return;
       } else {
-        console.log("e.deltaY", e.deltaY, "mousewheel function work");
         e.preventDefault();
         this.$refs["container"].scrollTop += -e.deltaY;
         return false;
@@ -248,6 +248,10 @@ export default {
       return pr.then(() => {
         return this.core.share(_sharing);
       });
+    },
+
+    messagesIsDeleted(state) {
+      this.$emit("messagesIsDeleted", state);
     },
   },
 };

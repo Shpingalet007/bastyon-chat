@@ -54,6 +54,8 @@
       @menuIsVisible="menuIsVisibleHandler"
       @shareManyMessages="shareManyMessages"
       v-if="type === 'message' || preview"
+      :isRemoveSelectedMessages="isRemoveSelectedMessages"
+      @messagesIsDeleted="messagesIsDeleted"
     />
 
     <common
@@ -161,6 +163,7 @@ export default {
       default: [],
       type: Array,
     },
+    isRemoveSelectedMessages: false,
   },
 
   computed: {
@@ -440,7 +443,6 @@ export default {
 
     removeEvent: function (event) {
       this.$emit("removeEvent", event);
-
       this.removed = true;
     },
 
@@ -449,15 +451,16 @@ export default {
     },
 
     selectMessage(message) {
-      console.log("emit message from add message");
       this.$emit("selectMessage", message);
     },
     removeMessage(message) {
-      console.log("emit message from remove message");
       this.$emit("removeMessage", message);
     },
     shareManyMessages: function (isShare) {
       this.$emit("shareManyMessages", isShare);
+    },
+    messagesIsDeleted(state) {
+      this.$emit("messagesIsDeleted", state);
     },
   },
 };

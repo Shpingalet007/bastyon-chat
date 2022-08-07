@@ -49,6 +49,7 @@ export default {
       default: [],
       type: Array,
     },
+    isRemoveSelectedMessages: false,
   },
   directives: {
     imagesLoaded,
@@ -344,7 +345,40 @@ export default {
       return elem[0]?.message_id === this.origin.event.event_id ? true : false;
     },
   },
+  watch: {
+    isRemoveSelectedMessages: {
+      immediate: true,
+      handler: function () {
+        if (this.isRemoveSelectedMessages) {
+          for (let i = 0; i < this.selectedMessages.length; i++) {
+            if (
+              this.selectedMessages[i].message_id === this.origin.event.event_id
+            ) {
+              this.$emit("remove");
 
+              return this.core.mtrx.client.redactEvent(
+                this.chat.roomId,
+                this.origin.event.event_id,
+                null,
+                {
+                  reason: "messagedeleting",
+                }
+              );
+            }
+          }
+          this.$emit("messagesIsDeleted", true);
+        }
+      },
+    },
+    selectedMessages: {
+      immediate: true,
+      handler: function () {
+        if (this.selectedMessages.length === 0) {
+          this.multiSelect = false;
+        }
+      },
+    },
+  },
   methods: {
     gotoreference: function () {
       var id = this.reference.getId();

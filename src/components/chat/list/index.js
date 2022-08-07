@@ -11,6 +11,7 @@ export default {
     filterType: String,
     error: [Object, Error, String],
     selectedMessages: [],
+    isRemoveSelectedMessages: false,
   },
 
   components: {
@@ -466,6 +467,9 @@ export default {
 
     shareManyMessages: function (isShare) {
       this.$emit("shareManyMessages", isShare);
+    },
+    messagesIsDeleted(state) {
+      this.$emit("messagesIsDeleted", state);
     },
   },
 };

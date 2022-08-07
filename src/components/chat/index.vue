@@ -40,6 +40,8 @@
         @getEvents="events"
         @shareManyMessages="shareManyMessages"
         :selectedMessages="selectedMessages"
+        :isRemoveSelectedMessages="isRemoveSelectedMessages"
+        @messagesIsDeleted="messagesIsDeleted"
       />
 
       <div v-if="m_chat && membership === 'invite'" class="joinwrapper">
@@ -107,7 +109,7 @@
           />
 
           <div v-if="showShareMessages" class="center shareEventsWrapper">
-            <div>
+            <div @click="removeDataMessages()">
               <i class="far fa-trash-alt"></i>{{ localisationTitles.delete }}
             </div>
             <div @click="shareDataMessages()">
