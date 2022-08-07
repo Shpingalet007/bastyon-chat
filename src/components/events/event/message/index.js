@@ -72,10 +72,6 @@ export default {
     VoiceMessage,
   },
 
-  mounted() {
-    console.log("message body", this.body);
-  },
-
   computed: {
     showburn: function () {
       if (new Date() < new Date(2021, 11, 28)) {
@@ -370,14 +366,6 @@ export default {
         }
       },
     },
-    selectedMessages: {
-      immediate: true,
-      handler: function () {
-        if (this.selectedMessages.length === 0) {
-          this.multiSelect = false;
-        }
-      },
-    },
   },
   methods: {
     gotoreference: function () {
@@ -464,6 +452,7 @@ export default {
     },
 
     menushowMultiSelect: function () {
+      console.log("emit work from menushowMultiSelect");
       this.$emit("showMultiSelect");
       this.selectMessage();
     },

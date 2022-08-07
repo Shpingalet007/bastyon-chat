@@ -48,6 +48,15 @@ export default {
 
   watch: {
     events: function () {},
+
+    selectedMessages: {
+      immediate: true,
+      handler: function () {
+        if (this.selectedMessages.length === 0) {
+          this.multiSelect = false;
+        }
+      },
+    },
   },
 
   computed: {
