@@ -52,13 +52,12 @@
         </span>
       </div>
       <div class="actionsWrapper" v-if="content.msgtype !== 'm.file'">
-        <div v-if="multiSelect">
+        <div v-if="multiSelect" class="multiSelect" @click="eventMessage(selectedMessage)">
           <i
             v-if="selectedMessage"
-            @click="removeMessage()"
             class="far fa-check-circle"
           ></i>
-          <i v-else @click="selectMessage()" class="far fa-circle"></i>
+          <i v-else class="far fa-circle"></i>
         </div>
         <i v-else @click="setmenu" class="fas fa-ellipsis-h"></i>
       </div>
@@ -257,6 +256,23 @@
   i.fa-check-circle {
     color: #00a3f7;
     opacity: 1 !important;
+  }
+  .multiSelect {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &:hover {
+      i {
+        opacity: 1;
+      }
+    }
   }
 }
 </style>

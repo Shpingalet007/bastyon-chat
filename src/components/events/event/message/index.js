@@ -621,5 +621,8 @@ export default {
         message_id: this.origin.event.event_id,
       });
     },
+    eventMessage(state) {
+      state ? this.removeMessage() : this.selectMessage()
+    }
   },
 };
