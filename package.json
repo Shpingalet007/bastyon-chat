@@ -10,7 +10,13 @@
 		"buildpocketnetdev": "npm run build -- --target wc-async --inline-vue --watch --name matrix-element src/App.vue",
 		"prepare": "husky install",
 		"lint-check": "prettier --check *",
-		"lint-fix": "prettier --write *"
+		"lint-fix": "prettier --write *",
+		"tag:pre": "node versioning.js --pre",
+		"tag:night": "node versioning.js --night",
+		"tag:reset": "node versioning.js --reset",
+		"publish:pre": "npm run tag:pre && npm publish --tag pre && npm run tag:reset",
+		"publish:night": "npm run tag:night && npm publish --tag night && npm run tag:reset",
+		"publish:release": "npm run tag:reset && npm publish"
 	},
 	"dependencies": {
 		"another-json": "^0.2.0",
