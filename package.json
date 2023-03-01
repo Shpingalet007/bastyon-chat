@@ -1,10 +1,9 @@
 {
-	"name": "vue-chat",
-	"version": "0.1.0",
-	"private": true,
+	"name": "@shpingalet007/bastyon-chat",
+	"version": "0.1.11",
 	"scripts": {
 		"serve": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
-		"build": "vue-cli-service build --dest C:/inetpub/wwwroot/pocketnet/chat",
+		"build": "vue-cli-service build",
 		"build_mac": "vue-cli-service build --dest ~/work/pocketnet/chat",
 		"buildpocketnet": "set NODE_OPTIONS=--openssl-legacy-provider && npm run build -- --target wc-async --inline-vue --name matrix-element src/App.vue",
 		"buildpocketnet_mac": "npm run build_mac -- --target wc-async --inline-vue --name matrix-element src/App.vue",
@@ -101,5 +100,11 @@
 	],
 	"lint-staged": {
 		"**/*.{js,vue,sass}": "prettier --write --ignore-unknown"
+	},
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
 	}
 }
